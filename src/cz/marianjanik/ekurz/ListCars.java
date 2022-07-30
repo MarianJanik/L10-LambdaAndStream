@@ -25,6 +25,15 @@ public class ListCars {
         return myList.stream().mapToInt(x -> x.getMaximalSpeed()).max().getAsInt();
     }
 
+    public int maxSpeed200_299() {
+        return myList
+                .stream()
+                .filter(x -> ((x.getMaximalSpeed()<300) && (x.getMaximalSpeed()>=200)))
+                .mapToInt(x -> x.getMaximalSpeed())
+                .max()
+                .getAsInt();
+    }
+
     public int maxSpeed2() {
         int max=0;
         for (Car car:myList) {
@@ -37,6 +46,16 @@ public class ListCars {
         return myList.stream().mapToInt(x -> x.getMaximalSpeed()).min().getAsInt();
     }
 
+    public int minSpeed200_299() {
+        return myList
+                .stream()
+                //.filter(x -> x.getName()=="Volvo")
+                .filter(x -> ((x.getMaximalSpeed()<300) && (x.getMaximalSpeed()>=200)))
+                .mapToInt(x -> x.getMaximalSpeed())
+                .min()
+                .getAsInt();
+    }
+
     public int sumMileageKm() {
         return myList.stream().mapToInt(x -> x.getDistanceTraveled()).sum();
     }
@@ -44,6 +63,12 @@ public class ListCars {
     public double averageSpeed() {
         return myList.stream().mapToDouble(x -> x.getMaximalSpeed()).average().getAsDouble();
     }
+
+    public double averageSpeedFerrari() {
+        return myList.stream().filter(x -> x.getName()=="Ferrari")
+                .mapToDouble(x -> x.getMaximalSpeed()).average().getAsDouble();
+    }
+
 
     public String writeName() {
         StringBuilder builder = new StringBuilder();
